@@ -54,20 +54,20 @@ category_index = label_map_util.create_category_index(categories)
 # print category_index
 
 def detect_objects(image_np, sess, detection_graph):
-    print image_np
-    print sess
-    print detection_graph
+    print(image_np)
+    print(sess)
+    print(detection_graph)
 
     # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
     image_np_expanded = np.expand_dims(image_np, axis=0)
-    print image_np_expanded
+    print(image_np_expanded)
 
     image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
-    print image_tensor
+    print(image_tensor)
 
     # Each box represents a part of the image where a particular object was detected.
     boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
-    print boxes
+    print(boxes)
 
     # Each score represent how level of confidence for each of the objects.
     # Score is shown on the result image, together with the class label.
@@ -75,9 +75,9 @@ def detect_objects(image_np, sess, detection_graph):
     classes = detection_graph.get_tensor_by_name('detection_classes:0')
     num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
-    print scores
-    print classes
-    print num_detections
+    print(scores)
+    print(classes)
+    print(num_detections)
 
     # Actual detection.
     (boxes, scores, classes, num_detections) = sess.run(
@@ -119,7 +119,7 @@ def worker(input_q, output_q):
 
 
 if __name__ == '__main__':
-    print "MAIN"
+    print("MAIN")
     parser = argparse.ArgumentParser()
     parser.add_argument('-src', '--source', dest='video_source', type=int,
                         default=0, help='Device index of the camera.')
